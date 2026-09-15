@@ -23,7 +23,10 @@ let
 
         window-rules = [
           {
-            matches = [ { app-id = ".*"; } ];
+            matches = [
+              { app-id = ".*"; }
+              { title = ''^notificationtoasts_\d+_desktop$''; }
+            ];
             excludes = [ { app-id = "org.keepassxc.KeePassXC"; } ];
             open-focused = false;
             open-floating = false;

@@ -33,9 +33,19 @@ let
         '';
       # surround strings with quotes
       toVal =
+        let
+          escape = lib.escape [
+            "\n"
+            "\\"
+            "\r"
+            "\t"
+            "\""
+            " "
+          ];
+        in
         v:
         if lib.isString v then
-          ''"${v}"''
+          ''"${escape v}"''
         else if lib.isBool v then
           (if v then "true" else "false")
         else
